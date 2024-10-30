@@ -63,14 +63,8 @@ class BlogsController < ApplicationController
 
   def import
     file = params[:attachment]
-    data = CSV.parse(file.to_io, headers: true, encoding: 'utf8')
-    # Start code to handle CSV data
-    ActiveRecord::Base.transaction do
-      data.each do |row|
-        current_user.blogs.create!(row.to_h)
-      end
-    end
-    # End code to handle CSV data
+    # Moved the import logic to a separate service
+    ImportBlogsService.new(current_user, file).import
     redirect_to blogs_path
   end
 
