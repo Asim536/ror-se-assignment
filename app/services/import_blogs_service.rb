@@ -11,6 +11,9 @@ class ImportBlogsService
   def import
     parse_csv
     insert_rows(@rows) if @rows.any?
+    Rails.logger.info "CSV import completed successfully."
+  rescue => e
+    Rails.logger.error "Import failed: #{e.message}"
   end
 
   private
@@ -20,13 +23,19 @@ class ImportBlogsService
       @rows << @user.blogs.new(row.to_h)
 
       if @rows.size >= @batch_size
-        insert_rows(@rows)
+        ActiveRecord::Base.transaction do
+          insert_rows(@rows)
+        end
         @rows.clear
       end
     end
+    rescue CSV::MalformedCSVError => e
+      Rails.logger.error "CSV Parsing Error: #{e.message}"
   end
 
   def insert_rows(rows)
     Blog.import(rows)
+    rescue ActiveRecord::RecordInvalid => e
+      Rails.logger.error "Database Insert Error: #{e.message}"
   end
 end
