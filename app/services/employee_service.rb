@@ -25,13 +25,11 @@ class EmployeeService
     send_request(uri, :put, employee_params)
   end
 
-  private
-
   def self.send_request(uri, method, body = nil)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = (uri.scheme == 'https')
     request = build_request(uri, method, body)
-    
+
     response = http.request(request)
     parse_response(response.body)
   end
