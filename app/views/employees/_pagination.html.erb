@@ -1,4 +1,6 @@
-<%= link_to 'First Page', employees_path(page: 1) %> |
-<%= link_to 'Previous Page', employees_path(page: pages["prev_page"]) %> |
-<%= link_to 'Next Page', employees_path(page: pages["next_page"]) %> |
-<%= link_to 'Last Page', employees_path(page: pages["total_pages"]) %>
+<div class="pagination">
+  <%= link_to 'First Page', employees_path(page: 1), class: 'btn btn-outline-secondary' %> |
+  <%= link_to 'Previous Page', employees_path(page: pages["prev_page"]), class: 'btn btn-outline-secondary' %> |
+  <%= link_to 'Next Page', employees_path(page: pages["next_page"]), class: 'btn btn-outline-secondary' %> |
+  <%= link_to 'Last Page', employees_path(page: pages["total_pages"]), class: 'btn btn-outline-secondary' %>
+</div>

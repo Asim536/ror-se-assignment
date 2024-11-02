@@ -1,4 +1,8 @@
-<div class="container">
-  <h1>Editing Employee</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">Editing Employee</h1>
   <%= render 'form', form_url: employee_path(@employee.dig("id")), form_method: :put %>
+
+  <div class="mt-4">
+    <%= link_to "Back to Employees", employees_path, class: 'btn btn-secondary' %>
+  </div>
 </div>
