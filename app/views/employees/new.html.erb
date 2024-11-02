@@ -1,5 +1,8 @@
-<div class="container">
-  <h1>New Employee</h1>
+<div class="container mt-5">
+  <h1 class="mb-4">New Employee</h1>
   <%= render 'form', form_url: employees_path, form_method: :post %>
-  <%= link_to "Back", employees_path, class: "btn btn-secondary mt-2" %>
+  
+  <div class="mt-4">
+    <%= link_to "Back", employees_path, class: "btn btn-secondary" %>
+  </div>
 </div>

@@ -1,25 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %>
+  <div class="alert alert-success">
+    <%= notice %>
+  </div>
+<% end %>
 
+<div class="container mt-5" id="blogs">
+  <h1 class="mb-4">Blogs</h1>
 
-<div class="container" id="blogs">
-<h1>Blogs</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Body</th>
-      <th scope="col">User</th>
-      <th colspan="2" scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render @blogs %>
-  </tbody>
-</table>
-<%== pagy_bootstrap_nav(@pagy) %>
-
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Body</th>
+        <th scope="col">User</th>
+        <th colspan="2" scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @blogs %>
+    </tbody>
+  </table>
+  
+  <div class="d-flex justify-content-center">
+    <%== pagy_bootstrap_nav(@pagy) %>
+  </div>
 </div>
-
-

@@ -1,13 +1,15 @@
-<div id="<%= dom_id blog %>">
-  <tr>
-    <th scope="row"><%= blog.id %></th>
-    <td><%= blog.title %></td>
-    <td><%= blog.body %></td>
-    <td><%= blog.user.email %></td>
-    
-    <% if blog.user == current_user %>
-      <td><a href="<%= edit_blog_path(blog)%>" class="card-link">Edit</a></td>
-    <% end %>
-      <td><a href="<%= blog_path(blog)%>" class="card-link">Show</a></td>
-  </tr>
-</div>
+<table class="table table-striped">
+  <tbody id="<%= dom_id blog %>">
+    <tr>
+      <th scope="row"><%= blog.id %></th>
+      <td><strong><%= blog.title %></strong></td>
+      <td><%= truncate(blog.body, length: 100) %></td>
+      <td><%= blog.user.email %></td>
+      
+      <% if blog.user == current_user %>
+        <td><a href="<%= edit_blog_path(blog) %>" class="btn btn-sm btn-primary">Edit</a></td>
+      <% end %>
+      <td><a href="<%= blog_path(blog) %>" class="btn btn-sm btn-info">Show</a></td>
+    </tr>
+  </tbody>
+</table>

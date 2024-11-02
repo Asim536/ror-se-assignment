@@ -1,18 +1,28 @@
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <td><%= @employee.dig("name") %></td>
-  </tr>
-  <tr>
-    <th>Position</th>
-    <td><%= @employee.dig("position") %></td>
-  </tr>
-  <tr>
-    <th>Salary</th>  
-    <td><%= @employee.dig("salary") %></td>
-  </tr>
-  <tr>
-    <th>Date of Birth</th>  
-    <td><%= @employee.dig("date_of_birth") %></td>
-  </tr>
-</table>
+<div class="container mt-5">
+  <h1 class="mb-4">Employee Details</h1>
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <th scope="row">Name</th>
+        <td><%= @employee.dig("name") %></td>
+      </tr>
+      <tr>
+        <th scope="row">Position</th>
+        <td><%= @employee.dig("position") %></td>
+      </tr>
+      <tr>
+        <th scope="row">Salary</th>  
+        <td><%= @employee.dig("salary") %></td>
+      </tr>
+      <tr>
+        <th scope="row">Date of Birth</th>  
+        <td><%= @employee.dig("date_of_birth") %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mt-4">
+    <%= link_to "Edit", edit_employee_path(@employee.dig("id")), class: "btn btn-primary" %>
+    <%= link_to "Back to Employees", employees_path, class: "btn btn-secondary" %>
+  </div>
+</div>
